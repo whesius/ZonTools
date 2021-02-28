@@ -1,2 +1,2 @@
 # ZonTools
-Tools for Developers and Administrators
+Tools for managing Services, MessageQueues and ApplicationPools

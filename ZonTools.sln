@@ -7,7 +7,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ZonTools", "ZonTools\ZonToo
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ZonTools.Controllers", "ZonTools.Controllers\ZonTools.Controllers.csproj", "{F49F2370-313A-42F9-82F3-80828659378E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZonTools.WebApi", "ZonTools.WebApi\ZonTools.WebApi.csproj", "{72D0EDF9-2FCF-447E-B732-85D070ACF2CE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ZonTools.WebApi", "ZonTools.WebApi\ZonTools.WebApi.csproj", "{72D0EDF9-2FCF-447E-B732-85D070ACF2CE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionItems", "SolutionItems", "{B50EAB6B-3D32-4723-B676-811C3B566ED0}"
+	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
