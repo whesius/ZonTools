@@ -14,6 +14,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionItems", "SolutionIt
 		README.md = README.md
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZonTools.Shared", "ZonTools.Shared\ZonTools.Shared.csproj", "{683172E0-9751-4369-ABFD-A09E8994EA81}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -32,6 +34,10 @@ Global
 		{72D0EDF9-2FCF-447E-B732-85D070ACF2CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{72D0EDF9-2FCF-447E-B732-85D070ACF2CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{72D0EDF9-2FCF-447E-B732-85D070ACF2CE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{683172E0-9751-4369-ABFD-A09E8994EA81}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{683172E0-9751-4369-ABFD-A09E8994EA81}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{683172E0-9751-4369-ABFD-A09E8994EA81}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{683172E0-9751-4369-ABFD-A09E8994EA81}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

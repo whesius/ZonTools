@@ -8,7 +8,6 @@ namespace ZonTools.Controllers
 {
     public class OptionsController : IOptionsController
     {
-
         private readonly IHttpClientFactory _clientFactory;
         public OptionsController(IHttpClientFactory clientFactory)
         {

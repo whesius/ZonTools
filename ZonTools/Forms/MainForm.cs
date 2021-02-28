@@ -50,5 +50,10 @@ namespace ZonTools
         {
             this.textBoxServer.Text = $"{ ((ComboBox)sender).SelectedValue}";
         }
+
+        private async void buttonFind_Click(object sender, EventArgs e)
+        {
+            this.dataGridViewServices.DataSource = await Program.ServiceProvider.GetService<IServicesController>().Get(this.textBoxServer.Text);
+        }
     }
 }

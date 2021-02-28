@@ -46,10 +46,10 @@ namespace ZonTools
             this.comboBoxServers = new System.Windows.Forms.ComboBox();
             this.textBoxServer = new System.Windows.Forms.TextBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.tabPageMsmqs = new System.Windows.Forms.TabPage();
-            this.tabPageAppPools = new System.Windows.Forms.TabPage();
             this.tabPageServices = new System.Windows.Forms.TabPage();
             this.dataGridViewServices = new System.Windows.Forms.DataGridView();
+            this.tabPageMsmqs = new System.Windows.Forms.TabPage();
+            this.tabPageAppPools = new System.Windows.Forms.TabPage();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabelUser = new System.Windows.Forms.ToolStripStatusLabel();
             this.menuStrip1.SuspendLayout();
@@ -178,6 +178,7 @@ namespace ZonTools
             this.buttonFind.TabIndex = 3;
             this.buttonFind.Text = "Find";
             this.buttonFind.UseVisualStyleBackColor = true;
+            this.buttonFind.Click += new System.EventHandler(this.buttonFind_Click);
             // 
             // labelServer
             // 
@@ -216,25 +217,6 @@ namespace ZonTools
             this.tabControl1.Size = new System.Drawing.Size(928, 361);
             this.tabControl1.TabIndex = 0;
             // 
-            // tabPageMsmqs
-            // 
-            this.tabPageMsmqs.Location = new System.Drawing.Point(4, 29);
-            this.tabPageMsmqs.Name = "tabPageMsmqs";
-            this.tabPageMsmqs.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageMsmqs.Size = new System.Drawing.Size(920, 328);
-            this.tabPageMsmqs.TabIndex = 1;
-            this.tabPageMsmqs.Text = "Message Queues";
-            this.tabPageMsmqs.UseVisualStyleBackColor = true;
-            // 
-            // tabPageAppPools
-            // 
-            this.tabPageAppPools.Location = new System.Drawing.Point(4, 29);
-            this.tabPageAppPools.Name = "tabPageAppPools";
-            this.tabPageAppPools.Size = new System.Drawing.Size(920, 328);
-            this.tabPageAppPools.TabIndex = 2;
-            this.tabPageAppPools.Text = "Application Pools";
-            this.tabPageAppPools.UseVisualStyleBackColor = true;
-            // 
             // tabPageServices
             // 
             this.tabPageServices.Controls.Add(this.dataGridViewServices);
@@ -260,6 +242,25 @@ namespace ZonTools
             this.dataGridViewServices.RowTemplate.Height = 29;
             this.dataGridViewServices.Size = new System.Drawing.Size(914, 322);
             this.dataGridViewServices.TabIndex = 0;
+            // 
+            // tabPageMsmqs
+            // 
+            this.tabPageMsmqs.Location = new System.Drawing.Point(4, 29);
+            this.tabPageMsmqs.Name = "tabPageMsmqs";
+            this.tabPageMsmqs.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageMsmqs.Size = new System.Drawing.Size(920, 328);
+            this.tabPageMsmqs.TabIndex = 1;
+            this.tabPageMsmqs.Text = "Message Queues";
+            this.tabPageMsmqs.UseVisualStyleBackColor = true;
+            // 
+            // tabPageAppPools
+            // 
+            this.tabPageAppPools.Location = new System.Drawing.Point(4, 29);
+            this.tabPageAppPools.Name = "tabPageAppPools";
+            this.tabPageAppPools.Size = new System.Drawing.Size(920, 328);
+            this.tabPageAppPools.TabIndex = 2;
+            this.tabPageAppPools.Text = "Application Pools";
+            this.tabPageAppPools.UseVisualStyleBackColor = true;
             // 
             // statusStrip1
             // 

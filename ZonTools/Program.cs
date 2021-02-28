@@ -39,6 +39,7 @@ namespace ZonTools
             var baseAddress = new Uri(ConfigurationManager.AppSettings["BaseAddress"]);
             services.AddHttpClient("ZonTools", (c) => { c.BaseAddress = baseAddress; });
             services.AddTransient<IOptionsController, OptionsController>();
+            services.AddTransient<IServicesController, ServicesController>();
             ServiceProvider = services.BuildServiceProvider();            
         }
     }
