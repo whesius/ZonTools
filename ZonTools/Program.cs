@@ -1,6 +1,7 @@
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -34,7 +35,9 @@ namespace ZonTools
         static void ConfigureServices()
         {
             var services = new ServiceCollection();
-            services.AddHttpClient("ZonTools", (c) => { c.BaseAddress = new Uri("http://localhost:57984/"); });
+
+            var baseAddress = new Uri(ConfigurationManager.AppSettings["BaseAddress"]);
+            services.AddHttpClient("ZonTools", (c) => { c.BaseAddress = baseAddress; });
             services.AddTransient<IOptionsController, OptionsController>();
             ServiceProvider = services.BuildServiceProvider();            
         }
