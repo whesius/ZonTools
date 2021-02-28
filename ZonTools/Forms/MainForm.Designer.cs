@@ -206,9 +206,9 @@ namespace ZonTools
             // 
             // tabControl1
             // 
+            this.tabControl1.Controls.Add(this.tabPageServices);
             this.tabControl1.Controls.Add(this.tabPageMsmqs);
             this.tabControl1.Controls.Add(this.tabPageAppPools);
-            this.tabControl1.Controls.Add(this.tabPageServices);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";

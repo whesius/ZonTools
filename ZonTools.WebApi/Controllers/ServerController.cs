@@ -26,6 +26,8 @@ namespace ZonTools.WebApi.Controllers
         [HttpGet]
         public IEnumerable<string> Get()
         {
+            _logger?.LogInformation($"{nameof(ServerController)}.{nameof(Get)}");
+
             return Servers
             .ToArray();
         }
