@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+option csharp_namespace = "ZonTools.GrpcService.Protos";
+
+service Server {
+	rpc GetServers() returns ServerMessage;
+}
+
+message ServerMesssage
+{
+	string name = 1;
+}
+
