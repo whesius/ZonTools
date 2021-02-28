@@ -232,6 +232,7 @@ namespace ZonTools
             // 
             this.dataGridViewServices.AllowUserToAddRows = false;
             this.dataGridViewServices.AllowUserToDeleteRows = false;
+            this.dataGridViewServices.AllowUserToOrderColumns = true;
             this.dataGridViewServices.BackgroundColor = System.Drawing.SystemColors.Window;
             this.dataGridViewServices.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewServices.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -242,6 +243,7 @@ namespace ZonTools
             this.dataGridViewServices.RowTemplate.Height = 29;
             this.dataGridViewServices.Size = new System.Drawing.Size(914, 322);
             this.dataGridViewServices.TabIndex = 0;
+            this.dataGridViewServices.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dataGridViewServices_DataBindingComplete);
             // 
             // tabPageMsmqs
             // 

@@ -12,13 +12,7 @@ namespace ZonTools.WebApi.Controllers
     [Route("[controller]/[action]")]
     public class ServiceController : ControllerBase
     {
-        private static readonly WindowsService[] Services = new[]
-        {
-            new WindowsService() { Name = "A", Status = "Running" },
-            new WindowsService() { Name = "B", Status = "Running" },
-            new WindowsService() { Name = "C", Status = "Running" }
-        };
-
+     
         private readonly ILogger<ServerController> _logger;
 
         public ServiceController(ILogger<ServerController> logger)
@@ -30,8 +24,22 @@ namespace ZonTools.WebApi.Controllers
         public IEnumerable<WindowsService> Pull([FromBody] Model model)
         {
             _logger?.LogInformation($"{nameof(ServiceController)}.{nameof(Pull)}");
-            
-            return Services.ToArray();
+
+            var services = System.ServiceProcess
+                .ServiceController
+                .GetServices(model.Server)
+                .Select((s) => new WindowsService() { 
+                    ServiceName = s.ServiceName, 
+                    DisplayName = s.DisplayName,
+                    Status = s.Status,
+                    StartType = s.StartType,
+                    CanStop = s.CanStop,
+                    CanShutdown = s.CanShutdown,
+                    CanPauseAndContinue = s.CanPauseAndContinue
+                });            
+                
+
+            return services.ToArray();
         }
 
         public class Model

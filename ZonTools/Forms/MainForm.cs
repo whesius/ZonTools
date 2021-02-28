@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using Macchiator;
+using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -11,6 +12,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using ZonTools.Controllers;
 using ZonTools.Forms;
+using ZonTools.Shared;
 
 namespace ZonTools
 {
@@ -19,8 +21,6 @@ namespace ZonTools
         public MainForm()
         {
             InitializeComponent();
-
-
         }
             
 
@@ -53,7 +53,17 @@ namespace ZonTools
 
         private async void buttonFind_Click(object sender, EventArgs e)
         {
-            this.dataGridViewServices.DataSource = await Program.ServiceProvider.GetService<IServicesController>().Get(this.textBoxServer.Text);
+            var collection = await Program.ServiceProvider.GetService<IServicesController>().Get(this.textBoxServer.Text);
+            this.dataGridViewServices.DataSource = new SortableBindingList<WindowsService>(collection.ToList());
+            
+        }
+
+        private void dataGridViewServices_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            foreach(DataGridViewColumn column in dataGridViewServices.Columns)
+            {
+                column.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            }
         }
     }
 }

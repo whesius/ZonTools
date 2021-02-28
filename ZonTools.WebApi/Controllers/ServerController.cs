@@ -13,7 +13,7 @@ namespace ZonTools.WebApi.Controllers
     {
         private static readonly string[] Servers = new[]
         {
-            "", "A", "B", "C", "D", "E"
+            "", System.Environment.MachineName
         };
 
         private readonly ILogger<ServerController> _logger;
