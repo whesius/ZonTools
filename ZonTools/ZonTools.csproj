@@ -16,4 +16,9 @@
     <ProjectReference Include="..\ZonTools.Controllers\ZonTools.Controllers.csproj" />
     <ProjectReference Include="..\ZonTools.Shared\ZonTools.Shared.csproj" />
   </ItemGroup>
+  <ItemGroup>
+    <Compile Update="UserControls\WebSiteUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+  </ItemGroup>
 </Project>

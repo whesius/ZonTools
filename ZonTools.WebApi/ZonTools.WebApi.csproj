@@ -2,6 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UserSecretsId>579352d5-e39d-4cda-a3db-6990f8c092ea</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
@@ -9,6 +10,7 @@
     <PackageReference Include="NLog" Version="4.7.8" />
     <PackageReference Include="NLog.Web.AspNetCore" Version="4.11.0" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.1.0" />
+    <PackageReference Include="System.DirectoryServices" Version="5.0.0" />
     <PackageReference Include="System.ServiceProcess.ServiceController" Version="5.0.0" />
   </ItemGroup>
 

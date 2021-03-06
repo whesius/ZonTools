@@ -25,6 +25,19 @@ namespace ZonTools
             });
 
             tabPageServices.ContextMenuStrip.Items.Add(toolstripItem);
+
+            tabPageAppPools.ContextMenuStrip = new ContextMenuStrip();
+            toolstripItem = new ToolStripMenuItem("Copy", null, (sender, e) =>
+            {
+                // Copy this tabPage
+                var tabPage = new TabPage("WebSites");
+                var uc = new WebSiteUserControl();
+                uc.Dock = DockStyle.Fill;
+                tabPage.Controls.Add(uc);
+                this.tabControl.TabPages.Add(tabPage);
+            });
+
+            tabPageAppPools.ContextMenuStrip.Items.Add(toolstripItem);
         }
 
 
@@ -45,7 +58,11 @@ namespace ZonTools
             this.tabPageServices.Controls.Add(uc);
             uc.Dock = DockStyle.Fill;
 
-          }
+            var uc1 = new WebSiteUserControl();
+            this.tabPageAppPools.Controls.Add(uc1);
+            uc1.Dock = DockStyle.Fill;
+
+        }
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {

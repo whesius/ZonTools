@@ -40,6 +40,7 @@ namespace ZonTools
             services.AddHttpClient("ZonTools", (c) => { c.BaseAddress = baseAddress; });
             services.AddTransient<IOptionsController, OptionsController>();
             services.AddTransient<IServicesController, ServicesController>();
+            services.AddTransient<IWebSiteController, WebSiteController>();
             ServiceProvider = services.BuildServiceProvider();            
         }
     }
