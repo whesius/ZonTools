@@ -51,6 +51,11 @@ namespace ZonTools.UserControls
         {           
             var collection = await Program.ServiceProvider.GetService<IWebSiteController>().Pull(this.textBoxServer.Text);
             this.dataGridView.DataSource = new SortableBindingList<WebSite>(collection.ToArray());
-        }        
+        }
+
+        private void dataGridView_DataError(object sender, DataGridViewDataErrorEventArgs e)
+        {
+            e.ThrowException = false;
+        }
     }
 }

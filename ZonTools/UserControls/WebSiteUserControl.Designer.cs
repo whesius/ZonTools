@@ -101,6 +101,7 @@ namespace ZonTools.UserControls
             this.dataGridView.RowTemplate.Height = 29;
             this.dataGridView.Size = new System.Drawing.Size(926, 437);
             this.dataGridView.TabIndex = 1;
+            this.dataGridView.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.dataGridView_DataError);
             // 
             // WebSiteUserControl
             // 

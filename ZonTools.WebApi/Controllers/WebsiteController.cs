@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using Microsoft.Web.Administration;
 using System;
 using System.Collections.Generic;
 using System.DirectoryServices;
@@ -31,25 +32,53 @@ namespace ZonTools.WebApi.Controllers
         [HttpPost]
         public async Task<ActionResult<IEnumerable<WebSite>>> Pull([FromBody] PayLoadServer model)
         {
-            return Ok( await Task.Run(() => GetSites($"IIS://{model.Server}/W3SVC")));
+            return Ok( await Task.Run(() => GetWebSites($"IIS://{model.Server}/W3SVC")));
+        }
+      
+        static IEnumerable<WebSite> GetWebSites(String Path)
+        { 
+            ServerManager IIS = new ServerManager();
+
+            var websites = new List<WebSite>();
+
+            foreach (var site in IIS.Sites)
+            {
+                websites.Add(new WebSite()
+                {
+                    Name = site.Name,
+                    Identity = (int)site.Id,                   
+                    PhysicalPath = site.Applications["/"].VirtualDirectories[0].PhysicalPath
+                });
+            }
+
+            return websites;
+
+            //DirectoryEntry IIsEntities = new DirectoryEntry(Path);
+
+            //foreach (DirectoryEntry IIsEntity in IIsEntities.Children)
+            //{
+            //    if (IIsEntity.SchemaClassName == "IIsWebServer")
+            //    {
+            //        yield return new WebSite()
+            //        {
+            //            Identity = Convert.ToInt32(IIsEntity.Name),
+            //            Name = IIsEntity.Properties["ServerComment"].Value.ToString(),
+            //            PhysicalPath = GetPath(IIsEntity),
+            //            Status = (ServerState)IIsEntity.Properties["ServerState"].Value
+            //        };
+            //    }
+            //}
         }
 
-        private IEnumerable<WebSite> GetSites(string path)
-        {
-            DirectoryEntry IIsEntities = new DirectoryEntry(path);
-
-            return (from s in IIsEntities.Children.OfType<DirectoryEntry>()
-                    where s.SchemaClassName == "IIsWebServer"
-                    select new WebSite
-                    {
-                        Identity = Convert.ToInt32(s.Name),
-                        Name = s.Properties["ServerComment"].Value.ToString(),
-                        PhysicalPath = (from p in s.Children.OfType<DirectoryEntry>()
-                                        where p.SchemaClassName == "IIsWebVirtualDir"
-                                        select p.Properties["Path"].Value.ToString()).Single(),
-                        Status = (ServerState)s.Properties["ServerState"].Value
-                    }).ToArray();
-        }
+        //static String GetPath(DirectoryEntry IIsWebServer)
+        //{
+        //    foreach (DirectoryEntry IIsEntity in IIsWebServer.Children)
+        //    {
+        //        if (IIsEntity.SchemaClassName == "IIsWebVirtualDir")
+        //            return IIsEntity.Properties["Path"].Value.ToString();
+        //    }
+        //    return null;
+        //}
 
         public class PayLoadServer
         {
