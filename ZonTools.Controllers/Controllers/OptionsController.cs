@@ -19,7 +19,7 @@ namespace ZonTools.Controllers
         {
             var client = _clientFactory.CreateClient("ZonTools");
 
-            var result = await client.GetAsync("Server");
+            var result = await client.GetAsync("Server/Pull");
             if (result.IsSuccessStatusCode)
             {
                 return await result.Content.ReadAsAsync<WindowsServer[]>();                 

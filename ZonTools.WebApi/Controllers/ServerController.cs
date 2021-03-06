@@ -9,7 +9,7 @@ using ZonTools.Shared;
 
 namespace ZonTools.WebApi.Controllers
 {
-    [Route("[controller]")]
+    [Route("[controller]/[action]")]
     [ApiController]
     [ApiVersion("1.1")]
     [ApiVersion("1.2")]
@@ -31,11 +31,11 @@ namespace ZonTools.WebApi.Controllers
         }
 
         [HttpGet]
-        public ActionResult<IEnumerable<WindowsServer>> Get()
+        public async Task<ActionResult<IEnumerable<WindowsServer>>> Pull()
         {
-            _logger?.LogInformation($"{nameof(ServerController)}.{nameof(Get)}");
+            _logger?.LogInformation($"{nameof(ServerController)}.{nameof(Pull)}");
 
-            return Ok(Servers.ToArray());
+            return Ok(await Task.Run(() => Servers.ToArray()));
         }
     }
 }
