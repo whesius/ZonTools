@@ -20,8 +20,22 @@ namespace ZonTools.Forms
         }
 
         private async void OptionsForm_Shown(object sender, EventArgs e)
-        {
-            this.listBox1.DataSource = await Program.ServiceProvider.GetService<IOptionsController>().GetServers();;
+        {            
+            var servers = await Program.ServiceProvider
+                .GetService<IOptionsController>()
+                .GetServers();
+
+            var server = servers.FirstOrDefault();
+
+            if (server != null)
+            {
+                this.listBox1.DisplayMember = nameof(server.Name);
+                this.listBox1.DataSource = servers;
+            }
+            else
+            {
+                this.listBox1.DataSource = "No Servers!";
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)

@@ -11,13 +11,14 @@ namespace ZonTools.Shared
 
         public ServiceControllerStatus Status { get; set; }
 
-               public string DisplayName { get; set; }
+        public string DisplayName { get; set; }
 
         public bool CanStop { get; set; }
 
         public bool CanShutdown { get; set; }
 
         public bool CanPauseAndContinue { get; set; }
-        public ServiceStartMode StartType { get; set; }
+
+        public ServiceStartMode StartType { get; set; }        
     }
 }

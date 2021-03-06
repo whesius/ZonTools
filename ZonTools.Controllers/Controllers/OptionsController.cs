@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using ZonTools.Shared;
 
 namespace ZonTools.Controllers
 {
@@ -13,18 +14,18 @@ namespace ZonTools.Controllers
         {
             _clientFactory = clientFactory;
         }
-
-        public async Task<IEnumerable<string>> GetServers()
+               
+        public async Task<IEnumerable<WindowsServer>> GetServers()
         {
             var client = _clientFactory.CreateClient("ZonTools");
 
             var result = await client.GetAsync("Server");
             if (result.IsSuccessStatusCode)
             {
-                return await result.Content.ReadAsAsync<string[]>();                 
+                return await result.Content.ReadAsAsync<WindowsServer[]>();                 
             }
             
-            return null;
+            return Array.Empty<WindowsServer>();
         }
     }
 }

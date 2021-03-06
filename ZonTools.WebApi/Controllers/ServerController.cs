@@ -3,17 +3,24 @@ using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Mime;
 using System.Threading.Tasks;
+using ZonTools.Shared;
 
 namespace ZonTools.WebApi.Controllers
 {
-    [ApiController]
     [Route("[controller]")]
+    [ApiController]
+    [ApiVersion("1.1")]
+    [ApiVersion("1.2")]
+    [Produces(MediaTypeNames.Application.Json)]
+    [Consumes(MediaTypeNames.Application.Json)]
     public class ServerController : ControllerBase
     {
-        private static readonly string[] Servers = new[]
+        private static readonly WindowsServer[] Servers = new[]
         {
-            "", System.Environment.MachineName
+            new WindowsServer() { Name= ""},
+            new WindowsServer() { Name=  System.Environment.MachineName }
         };
 
         private readonly ILogger<ServerController> _logger;
@@ -24,12 +31,11 @@ namespace ZonTools.WebApi.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<string> Get()
+        public ActionResult<IEnumerable<WindowsServer>> Get()
         {
             _logger?.LogInformation($"{nameof(ServerController)}.{nameof(Get)}");
 
-            return Servers
-            .ToArray();
+            return Ok(Servers.ToArray());
         }
     }
 }

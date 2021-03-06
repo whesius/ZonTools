@@ -20,7 +20,7 @@ namespace ZonTools.Controllers
             _clientFactory = clientFactory;
         }
 
-        public async Task<IEnumerable<WindowsService>> Get(string server)
+        public async Task<IEnumerable<WindowsService>> Pull(string server)
         {
             var client = _clientFactory.CreateClient("ZonTools");
          
@@ -39,6 +39,48 @@ namespace ZonTools.Controllers
             }
 
             return null;
-        }       
+        }
+
+        public async Task<IEnumerable<WindowsService>> Start(string server, IEnumerable<WindowsService> services)
+        {
+            var client = _clientFactory.CreateClient("ZonTools");
+
+            var content = new { Server = server, WindowsServices = services };
+
+            var json = JsonSerializer.Serialize(content);
+            var result = await client.PostAsync(
+                new Uri("Service/Start", UriKind.Relative),
+                new StringContent(json, Encoding.UTF8, "application/json"));
+
+            if (result.IsSuccessStatusCode)
+            {
+                var resultContent = await result.Content.ReadAsAsync<WindowsService[]>();
+
+                return resultContent;
+            }
+
+            return null;
+        }
+
+        public async Task<IEnumerable<WindowsService>> Stop(string server, IEnumerable<WindowsService> services)
+        {
+            var client = _clientFactory.CreateClient("ZonTools");
+
+            var content = new { Server = server, WindowsServices = services };
+
+            var json = JsonSerializer.Serialize(content);
+            var result = await client.PostAsync(
+                new Uri("Service/Stop", UriKind.Relative),
+                new StringContent(json, Encoding.UTF8, "application/json"));
+
+            if (result.IsSuccessStatusCode)
+            {
+                var resultContent = await result.Content.ReadAsAsync<WindowsService[]>();
+
+                return resultContent;
+            }
+
+            return null;
+        }
     }
 }
