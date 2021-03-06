@@ -20,7 +20,7 @@ namespace ZonTools.WebApi.Controllers
         private static readonly WindowsServer[] Servers = new[]
         {
             new WindowsServer() { Name= ""},
-            new WindowsServer() { Name=  System.Environment.MachineName }
+            new WindowsServer() { Name=  Environment.MachineName }
         };
 
         private readonly ILogger<ServerController> _logger;
@@ -30,7 +30,7 @@ namespace ZonTools.WebApi.Controllers
             _logger = logger;
         }
 
-        [HttpGet]
+        [HttpPost]
         public async Task<ActionResult<IEnumerable<WindowsServer>>> Pull()
         {
             _logger?.LogInformation($"{nameof(ServerController)}.{nameof(Pull)}");
